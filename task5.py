@@ -1,24 +1,26 @@
 def is_prime(number: int) -> bool:
     if number < 2:
         return False
-    if number == 2:
-        return True
-    if number % 2 == 0:
-        return False
-
-    for divisor in range(3, int(number**0.5) + 1, 2):
-        if number % divisor == 0:
+    
+    for i in range(2, number):
+        if number % i == 0:
             return False
 
     return True
 
 
-def find_primes_up_to(limit: int) -> list[int]:
-    return [num for num in range(2, limit + 1) if is_prime(num)]
+def find_primes_up_to(n: int) -> list[int]:
+    prime_numbers = []
+
+    for i in range(1, n + 1):
+        if is_prime(i):
+            prime_numbers.append(i)
+    
+    return prime_numbers
 
 
 if __name__ == "__main__":
-    limit_number = 100
-    primes_list = find_primes_up_to(limit_number)
-    print(f"Список простых чисел до {limit_number}:")
+    number_n = 100
+    primes_list = find_primes_up_to(number_n)
+    print(f"Список простых чисел до {number_n}:")
     print(primes_list)
