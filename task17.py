@@ -8,9 +8,9 @@ def count_word_frequency(filepath: str) -> dict[str, int]:
             text = file.read()
 
         text = text.lower()
-        
-        translator = str.maketrans('', '', string.punctuation)
-        text = text.translate(translator)
+
+        for p in string.punctuation:
+            text = text.replace(p, "")
 
         words = text.split()
 
