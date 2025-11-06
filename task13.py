@@ -1,6 +1,6 @@
 def generate_fibonacci(n: int) -> list[int]:
     if n <= 0:
-        return []
+        raise ValueError("Последовательность Фибоначчи не может быть меньше 1")
     elif n == 1:
         return [0]
 
@@ -14,6 +14,9 @@ def generate_fibonacci(n: int) -> list[int]:
 
 
 if __name__ == "__main__":
-    count_n = 10
-    fib_sequence = generate_fibonacci(count_n)
-    print(f"Первые {count_n} чисел Фибоначчи: {fib_sequence}")
+    try:
+        count_n = 10
+        fib_sequence = generate_fibonacci(count_n)
+        print(f"Первые {count_n} чисел Фибоначчи: {fib_sequence}")
+    except ValueError as e:
+        print(f"Ошибка: {e}")
